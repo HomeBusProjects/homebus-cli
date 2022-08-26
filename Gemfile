@@ -2,5 +2,5 @@ source 'https://rubygems.org'
 
 gem 'options'
 gem 'highline'
-gem 'homebus', git: 'https://github.com/HomeBusProjects/ruby-homebus'
+gem 'homebus', git: 'https://github.com/HomeBusProjects/ruby-homebus', branch: 'main'
 gem 'mqtt'

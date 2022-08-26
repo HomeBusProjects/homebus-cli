@@ -6,21 +6,28 @@ GIT
     homebus (0.30.2)
       mqtt (~> 0.5.0)
 
+PATH
+  remote: .
+  specs:
+    homebus-cli (0.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
+    cgi (0.3.2)
+    erb (2.2.3)
+      cgi
     highline (2.0.3)
     mqtt (0.5.0)
-    options (2.3.2)
 
 PLATFORMS
-  ruby
+  arm64-darwin-21
 
 DEPENDENCIES
+  erb
   highline
   homebus!
-  mqtt
-  options
+  homebus-cli!
 
 BUNDLED WITH
    2.3.20

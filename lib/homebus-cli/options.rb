@@ -1,6 +1,6 @@
 require 'homebus'
 
-class HomebusCliOptions < Homebus::Options
+class HomebusCLI::Options < Homebus::Options
   def app_options(op)
     username_help     = 'Homebus provisoning server username (usually email address)'
     password_help     = 'Homebus provisioning server password'
@@ -12,11 +12,11 @@ class HomebusCliOptions < Homebus::Options
   end
 
   def banner
-    'Homebus CLI'
+    'Homebus command line interface'
   end
 
   def version
-    '0.0.1'
+    HomebusCLI::VERSION
   end
 
   def name

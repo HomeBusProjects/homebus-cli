@@ -1,9 +1,10 @@
 #!/usr/bin/env ruby
 
-require './options'
-require './app'
+require 'homebus-cli/options'
+require 'homebus-cli/app'
 
-cli = CliHomebusApp.new({})
+options = HomebusCLI::Options.new
+cli = HomebusCLI::App.new(options)
 
 verb = ARGV.shift
 unless verb
@@ -20,6 +21,8 @@ when 'show'
   cli.show
 when 'reset'
   cli.reset
+when 'new'
+  cli.new_project
 else
   puts "unknown action #{verb}"
 end

@@ -4,7 +4,7 @@ require 'net/http'
 
 require 'homebus'
 
-class CliHomebusApp < Homebus::App
+class HomebusCLI::App < Homebus::App
   def initialize(options = {})
     @options = Hash.new
 

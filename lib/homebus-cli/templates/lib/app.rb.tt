@@ -1,0 +1,44 @@
+require 'homebus'
+
+class <%= classname %>::App < Homebus::App
+  DDC = 'org.experimental.homebus.'
+
+  def initialize(options)
+    @options = options
+    super
+  end
+
+  def setup!
+    @device = Homebus::Device.new name: '',
+                                  model: '',
+                                  manufacturer: '',
+                                  serial_number: ''
+  end
+
+  def work!
+    payload = {
+    }
+
+    if options[:verbose]
+      puts payload
+    end
+
+    @device.publish! DDC, payload
+  end
+
+  def name
+    '<%= pathname %>'
+  end
+
+  def consumes
+    []
+  end
+
+  def publishes
+    [ DDC ]
+  end
+
+  def devices
+    [ @device ]
+  end
+end

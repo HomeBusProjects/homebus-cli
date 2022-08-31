@@ -1,28 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'homebus-cli/options'
-require 'homebus-cli/app'
+require 'homebus-cli/cli'
 
-options = HomebusCLI::Options.new
-cli = HomebusCLI::App.new(options)
-
-verb = ARGV.shift
-unless verb
-  puts 'usage: homebus-cli login <https://servername> <email-address>'
-  exit -1
-end
-
-case verb
-when 'login'
-  cli.login
-when 'logout'
-  cli.logout
-when 'show'
-  cli.show
-when 'reset'
-  cli.reset
-when 'new'
-  cli.new_project
-else
-  puts "unknown action #{verb}"
-end
+Homebus::CLI.start(ARGV)

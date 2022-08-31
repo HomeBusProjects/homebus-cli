@@ -1,0 +1,15 @@
+require 'homebus/options'
+require '<%= pathname %>/version'
+
+class <%= classname %>::Options << Homebus::Options
+  def app_options(op)
+  end   
+
+  def version
+    <%= classname %>::VERSION
+  end
+
+  def name
+    '<%= pathname %>'
+  end
+end

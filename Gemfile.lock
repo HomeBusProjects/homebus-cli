@@ -15,19 +15,21 @@ GEM
   remote: https://rubygems.org/
   specs:
     cgi (0.3.2)
+    dotenv (2.8.1)
     erb (2.2.3)
       cgi
-    highline (2.0.3)
     mqtt (0.5.0)
+    thor (1.2.1)
 
 PLATFORMS
   arm64-darwin-21
 
 DEPENDENCIES
+  dotenv
   erb
-  highline
   homebus!
   homebus-cli!
+  thor
 
 BUNDLED WITH
-   2.3.20
+   2.3.19

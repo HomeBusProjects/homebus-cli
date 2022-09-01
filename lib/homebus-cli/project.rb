@@ -55,6 +55,22 @@ class Homebus::CLI::Project < Thor::Group
     end
   end
 
+  def exe_files
+    dest_filename = "#{pathname}/exe/#{pathname}"
+    template("exe/%pathname%.tt", "#{pathname}/exe/#{pathname}")
+    chmod dest_filename, 0755
+  end
+
+  def bin_files
+    dest_filename = "#{pathname}/bin/#{pathname}"
+    template("bin/%pathname%.tt", dest_filename)
+    chmod dest_filename, 0755
+  end
+
+  def systemd_files
+    template("systemd/%pathname%.service.tt", "#{pathname}/systemd/#{pathname}.service")
+  end
+
   def license
     if options[:mit]
       copy_file 'MIT-LICENSE', "#{pathname}/MIT-LICENSE"

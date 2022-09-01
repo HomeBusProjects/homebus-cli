@@ -1,13 +1,13 @@
-# %pathname%
+# <%= pathname%>
 
 Command line interface to Homebus. The initial version is extremely limited; it lets you login and stashes an auth token that allows other applications to provision themselves.
 
 ## Usage
 
-On its first run, `%pathname%` needs to know how to find the Homebus provisioning server.
+On its first run, `<%= pathname %>` needs to know how to find the Homebus provisioning server.
 
 ```
-bin/%pathname% -b homebus-server-IP-or-domain-name -P homebus-server-port username [password]
+bin/<%= pathname %> -b homebus-server-IP-or-domain-name -P homebus-server-port username [password]
 ```
 
 The port will usually be 80 (its default value). The server will default to homebus.io

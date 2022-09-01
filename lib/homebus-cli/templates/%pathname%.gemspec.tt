@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description = 'Command line (shell) interface for Homebus'
   spec.homepage = 'https://github.com/<%= options[:username] %>/<%= pathname %>'
   spec.license = 'MIT'
-  spec.required_ruby_version = '>= <%= options[:ruby_version] %>'
+  spec.required_ruby_version = ">= #{File.read('.ruby-version')}"
 
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = 'https://github.com/<%= options[:username] %>/<%= pathname %>'

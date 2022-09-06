@@ -40,7 +40,7 @@ class Homebus::CLI::Project < Thor::Group
   end
 
   def top_level
-    top_files = %w/Gemfile README.md .gitignore .ruby-version/
+    top_files = %w/Gemfile Rakefile README.md .gitignore .ruby-version/
     top_files.each do |f|
       template("#{f}.tt", "#{pathname}/#{f}")
     end

@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require '<%= pathname %>/options'
+require '<%= pathname %>/app'
+
+options = <%= classname %>::Options.new
+app = <%= classname %>::App.new(options.options)
+app.run!
+

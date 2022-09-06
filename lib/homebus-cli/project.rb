@@ -13,7 +13,8 @@ class Homebus::CLI::Project < Thor::Group
   class_option :emailaddress, default: `git config --get user.email`.chomp
   class_option :mit, default: false, type: :boolean
   class_option :git, default: false, type: :boolean
-  
+  class_option :conduct, type: :string
+
   def self.source_root
     File.dirname(__FILE__) + '/templates'
   end
@@ -46,6 +47,10 @@ class Homebus::CLI::Project < Thor::Group
     end
 
     template("%pathname%.gemspec", "#{pathname}/#{pathname}.gemspec")
+
+    if options[:conduct]
+      template("CODE-OF-CONDUCT.md.tt", "#{pathname}/CODE-OF-CONDUCT.md")
+    end
   end
 
   def lib_files

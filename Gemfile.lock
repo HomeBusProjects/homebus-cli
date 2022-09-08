@@ -9,7 +9,7 @@ GIT
 PATH
   remote: .
   specs:
-    homebus-cli (0.4.0)
+    homebus-cli (0.5.0)
 
 GEM
   remote: https://rubygems.org/

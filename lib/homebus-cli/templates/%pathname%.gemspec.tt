@@ -5,17 +5,17 @@ require_relative 'lib/<%= pathname %>/version'
 Gem::Specification.new do |spec|
   spec.name = '<%= pathname %>'
   spec.version = <%= classname %>::VERSION
-  spec.authors = ['<%= options[:username] %>']
+  spec.authors = ['<%= options[:name] %>']
   spec.email = ['<%= options[:emailaddress] %>']
 
   spec.summary = 'Homebus command line interface'
   spec.description = 'Command line (shell) interface for Homebus'
-  spec.homepage = 'https://github.com/<%= options[:username] %>/<%= pathname %>'
+  spec.homepage = 'https://github.com/<%= options[:github_username] %>/<%= pathname %>'
   spec.license = 'MIT'
   spec.required_ruby_version = ">= #{File.read('.ruby-version')}"
 
   spec.metadata['homepage_uri'] = spec.homepage
-  spec.metadata['source_code_uri'] = 'https://github.com/<%= options[:username] %>/<%= pathname %>'
+  spec.metadata['source_code_uri'] = 'https://github.com/<%= options[:github_username] %>/<%= pathname %>'
 #  spec.metadata['changelog_uri'] = 'TODO: Put your gem's CHANGELOG.md URL here.'
 
   all_files  = `git ls-files`.split($INPUT_RECORD_SEPARATOR)

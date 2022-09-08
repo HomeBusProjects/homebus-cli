@@ -9,10 +9,12 @@ class Homebus::CLI::Project < Thor::Group
   argument :classname, required: false, type: :string
 
   class_option :'ruby-version', default: `/usr/bin/env ruby -e 'puts RUBY_VERSION'`
-  class_option :username, default: `git config --get user.name`.chomp
+  class_option :name, default: `git config --get user.name`.chomp
+  class_option :github_username, default: `git config --get github.user`.chomp
   class_option :emailaddress, default: `git config --get user.email`.chomp
-  class_option :mit, default: false, type: :boolean
-  class_option :git, default: false, type: :boolean
+  class_option :mit, default: true, type: :boolean
+  class_option :git, default: true, type: :boolean
+  class_option :spec, default: true, type: :boolean
   class_option :conduct, type: :string
 
   def self.source_root
@@ -72,6 +74,24 @@ class Homebus::CLI::Project < Thor::Group
     chmod dest_filename, 0755
   end
 
+  def spec_files
+    if options[:spec]
+      empty_directory "#{pathname}/spec"
+      empty_directory "#{pathname}/.github"
+      empty_directory "#{pathname}/.github/workflows"
+
+      template "spec/%name%_spec.rb.tt", "#{pathname}/spec/#{pathname}_spec.rb"
+      template "spec/spec_helper.rb.tt", "#{pathname}/spec/spec_helper.rb"
+      template ".github/workflows/rspec.yml.tt", "#{pathname}/.github/workflows/rspec.yml"
+      template ".rspec.tt", "#{pathname}/.rspec"
+
+      old_dir = Dir.pwd
+      Dir.chdir(pathname)
+      `bundle lock --add-platform x86_64-linux`
+      Dir.chdir(old_dir)
+    end
+  end
+
   def systemd_files
     template("systemd/%pathname%.service.tt", "#{pathname}/systemd/#{pathname}.service")
   end
@@ -84,9 +104,11 @@ class Homebus::CLI::Project < Thor::Group
 
   def git
     if options[:git]
+      old_dir = Dir.pwd
       Dir.chdir(pathname)
       `git init`
       `git add .`
+      Dir.chdir(old_dir)
     end
   end
 

@@ -1,7 +1,7 @@
 require 'homebus/options'
 require '<%= pathname %>/version'
 
-class <%= classname %>::Options << Homebus::Options
+class <%= classname %>::Options < Homebus::Options
   def app_options(op)
   end   
 
